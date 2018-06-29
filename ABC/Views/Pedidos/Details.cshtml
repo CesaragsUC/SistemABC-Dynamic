@@ -1,0 +1,50 @@
+﻿@model ABC.Models.Data.Pedido
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Relatório</h2>
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produto.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produto.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecoUnidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecoUnidade)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id },new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-info" })
+</p>

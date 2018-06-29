@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ABC.Models.Data.Pedido>
+
+@{
+    ViewBag.Title = "Index";
+}
+@using PagedList.Mvc;
+@using PagedList;
+
+<h2>Pedidos</h2>
+
+<p>
+    @Html.ActionLink("Novo Pedido", "Create", null, new { @class = "btn btn-info" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            N°
+        </th>
+        <th>
+            Cliente
+        </th>
+        <th>
+            Produto
+        </th>
+
+        <th>
+            R$
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.onPaginaDePedidos)
+    {
+        <tr>
+            <td>
+                # @item.Id
+            </td>
+            <td>
+                @item.Cliente.Nome
+            </td>
+            <td>
+                @item.Produto.Nome
+            </td>
+
+            <td>
+                @item.PrecoUnidade
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Relatório", "Details", new { id = item.Id }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)ViewBag.onPaginaDePedidos, pagina => Url.Action("Index", new { pagina }))
